@@ -36,15 +36,26 @@ button {
 }
 
 .slideshow {
-  margin-top: 30px;
+  position: relative;
+  overflow: hidden;
 }
 
 .slide {
-  padding: 15px;
-  margin: 10px auto;
-  width: 60%;
-  font-style: italic;
-  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  box-sizing: border-box;
+}
+
+.slide.active {
+  opacity: 1;
+  position: relative; 
 }
 
 /* Pastel Colors */
