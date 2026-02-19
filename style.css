@@ -1,0 +1,55 @@
+body {
+  background-color: white;
+  font-family: Georgia, serif;
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  color: #743089; /* Dark purple */
+}
+
+h2 {
+  color: #743089; /* Dark purple */
+}
+
+.input-section {
+  margin: 20px 0;
+}
+
+input {
+  padding: 8px;
+  width: 250px;
+  font-family: Georgia, serif;
+}
+
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.output-box {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  min-height: 60px;
+}
+
+.slideshow {
+  margin-top: 30px;
+}
+
+.slide {
+  padding: 15px;
+  margin: 10px auto;
+  width: 60%;
+  font-style: italic;
+  border-radius: 6px;
+}
+
+/* Pastel Colors */
+.pastel-red { background-color: #ffd6d6; }
+.pastel-orange { background-color: #ffe5cc; }
+.pastel-yellow { background-color: #fff9cc; }
+.pastel-green { background-color: #d6f5d6; }
+.pastel-blue { background-color: #d6eaff; }
