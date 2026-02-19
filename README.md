@@ -1,9 +1,7 @@
 # Positive Affirmation Bot 🌺 (In progress, February 2026)  
 A client-side web application that generates personalized positive affirmations using an AI text-generation model. Users can enter a theme or mood (e.g., confidence, abundance, anxiety), and the app returns a short, uplifting affirmation tailored to that theme. If no theme is entered, a general wellness affirmation is generated.  
 
-## 🚀 Live Demo (In progress)  
-
-[Positive Affirmation Bot Live Demo](https://cvcpatton.github.io/positive-affirmation-bot/index.html))  
+🚀 Live Demo (In progress) - [Positive Affirmation Bot Live Demo](https://cvcpatton.github.io/positive-affirmation-bot/index.html))  
 
 ## Features  
 
