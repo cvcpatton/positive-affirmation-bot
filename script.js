@@ -21,7 +21,7 @@ const outputBox = document.getElementById("outputBox"); // Container where the g
 // ------------------------------------------------------
 
 const API_URL = "https://api-inference.huggingface.co/models/distilgpt2"; // Hugging Face inference router endpoint
-const API_KEY = "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"; // Replace with your free Hugging Face API token
+const API_KEY = "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"; // Replace with your free Hugging Face API token
 
 
 
