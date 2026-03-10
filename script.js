@@ -48,9 +48,9 @@ async function generateAffirmation() {
   }
 
   const theme = themeInput.value.trim();
-  const prompt = theme
-    ? `Please give me a one-sentence positive affirmation on the theme of ${theme}. Tone should be encouraging and supportive.`
-    : "Please give me a one-sentence positive affirmation focused on general wellness. Tone should be encouraging and supportive.";
+const prompt = theme
+  ? `Write a positive affirmation about ${theme}. Example: "I am confident and capable." Your sentence:`
+  : `Write a positive affirmation about wellness. Example: "Every day I grow stronger and happier." Your sentence:`;
 
   outputBox.innerText = "Generating affirmation...";
 
