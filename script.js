@@ -1,6 +1,8 @@
 // ======================================================
-// Positive Affirmation Bot (Browser-only, no API key)
+// Positive Affirmation Bot (Browser-only, ES Module)
 // ======================================================
+
+import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.3.0/dist/transformers.min.js';
 
 const themeInput = document.getElementById("themeInput");
 const generateBtn = document.getElementById("generateBtn");
@@ -21,7 +23,7 @@ showSlide(currentSlide);
 setInterval(() => {
   currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
-}, 4000);
+}, 6000);
 
 // -----------------------------
 // Load DistilGPT2 model in browser
@@ -30,11 +32,10 @@ let generator;
 
 async function loadModel() {
   outputBox.innerText = "Loading AI model...";
-  generator = await window.transformers.pipeline("text-generation", "Xenova/distilgpt2");
+  generator = await pipeline("text-generation", "Xenova/distilgpt2");
   outputBox.innerText = "AI model loaded! Enter a theme and click Generate.";
 }
 
-// Call the loadModel function
 loadModel();
 
 // -----------------------------
@@ -46,9 +47,7 @@ async function generateAffirmation() {
     return;
   }
 
-  let theme = themeInput.value.trim();
-  theme = theme.replace(/[^a-zA-Z\s]/g, "");
-
+  const theme = themeInput.value.trim();
   const prompt = theme
     ? `Please give me a one-sentence positive affirmation on the theme of ${theme}. Tone should be encouraging and supportive.`
     : "Please give me a one-sentence positive affirmation focused on general wellness. Tone should be encouraging and supportive.";
@@ -57,14 +56,8 @@ async function generateAffirmation() {
 
   try {
     const result = await generator(prompt, { max_new_tokens: 30, do_sample: true, temperature: 0.9 });
-
-    let affirmation = result[0].generated_text.trim();
-
-    // Keep only the first sentence
-    affirmation = affirmation.split(".")[0] + ".";
-
+    let affirmation = result[0].generated_text.split(".")[0] + ".";
     outputBox.innerText = affirmation;
-
   } catch (error) {
     console.error("AI generation error:", error);
     outputBox.innerText = "Sorry — the affirmation generator failed. Try again.";
