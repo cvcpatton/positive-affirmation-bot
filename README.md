@@ -1,29 +1,31 @@
 # Positive Affirmation Bot 🌺 (In progress, February 2026)  
-A client-side web application that generates personalized positive affirmations using an AI text-generation model. Users can enter a theme or mood (e.g., confidence, abundance, anxiety), and the app returns a short, uplifting affirmation tailored to that theme. If no theme is entered, a general wellness affirmation is generated.  
+A client-side web app that delivers uplifting affirmations based on selected themes. Users can choose from 24 themes or a "Random (All)" option to receive a short, encouraging message. The app uses a curated dataset of hundreds of affirmations, making it fast, reliable, and easy to use without any external dependencies.  
 
 🚀 Live Demo (In progress) - [Positive Affirmation Bot Live Demo](https://cvcpatton.github.io/positive-affirmation-bot/index.html)  
 
 ## Features  
 
-- AI-generated one- or two-sentence affirmations  
-- User-customizable theme input  
-- Default general wellness affirmation if left blank  
-- Clean, accessible UI  
-- Pastel sample affirmation slideshow  
-- Fully client-side deployment via GitHub Pages  
+- Theme-based affirmation selector (24 categories)  
+- Curated dataset of hundreds of positive affirmations
+- "Affirmation of the Day" display
+- Fast, fully client-side experience (no API calls required)  
+- Clean, accessible UI
+- Save and share affirmations as formatted JPG images  
+- Pastel-themed affirmation slideshow of sample output  
 
 ## Tech Stack  
 
 - HTML5  
 - CSS3  
 - JavaScript (ES6+)  
-- Fetch API  
-- Hugging Face Inference API (Mistral-7B-Instruct) ... ? not working yet  
+- CSV dataset for affirmation storage and retrieval  
+
+## Project Notes
+
+This project originally explored AI-generated affirmations using an external inference API. After running into reliability and integration challenges, the approach was simplified to use a structured dataset instead, resulting in faster performance, greater stability, and easier deployment via GitHub Pages.  
 
 ## Possible Improvements  
 
-- Copy-to-clipboard feature  
-- Animation transitions  
 - Affirmation history tracking  
-- ARIA enhancements
+- Expanded dataset and theme categories  
 
