@@ -29,10 +29,13 @@ button {
 }
 
 .output-box {
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  min-height: 60px;
+  margin-top: 20px;        
+  padding: 10px 14px;      
+  border: 1px solid #ddd; 
+  min-height: 40px;        
+  line-height: 1.4;        
+  background-color: #d6f9f9; /* very light teal/turquoise */
+  border-radius: 12px;      
 }
 
 .theme-buttons {
