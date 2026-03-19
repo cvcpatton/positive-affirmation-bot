@@ -2,22 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Graceful Nudge Affirmations by Cathy Patton</title>
+  <title>Graceful Nudge Affirmations</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <h1>Graceful Nudge Affirmations 🌺</h1>
-
-  <p>Enter your theme/mood and receive a personalized uplifting affirmation.</p>
-
-  <div class="input-section">
-    <input type="text" id="themeInput" placeholder="e.g., confidence, abundance, wellness">
-    <button id="generateBtn">Generate Affirmation</button>
-  </div>
   
-  <p> >>> Note: This site is in progress and the button doesn't work yet. Thank you for your patience. <<<
+  <div id="todaysAffirmation" class="output-box">
+  Today's Affirmation will appear here.
+</div>
 
+<h2>Select a Theme</h2>
+
+<div class="theme-buttons">
+  <button class="theme-btn">Self-Love & Self-Worth</button>
+  <button class="theme-btn">Confidence & Personal Power</button>
+  <button class="theme-btn">Mental Clarity & Focus</button>
+  <button class="theme-btn">Emotional Healing</button>
+  <button class="theme-btn">Inner Peace & Calm</button>
+  <button class="theme-btn">Physical Health & Vitality</button>
+  <button class="theme-btn">Motivation & Productivity</button>
+  <button class="theme-btn">Success & Achievement</button>
+  <button class="theme-btn">Prosperity & Financial Abundance</button>
+  <button class="theme-btn">Career & Professional Growth</button>
+  <button class="theme-btn">Creativity & Inspiration</button>
+  <button class="theme-btn">Personal Growth & Self-Improvement</button>
+  <button class="theme-btn">Friendships & Connection</button>
+  <button class="theme-btn">Romantic Love</button>
+  <button class="theme-btn">Family Harmony</button>
+  <button class="theme-btn">Gratitude & Appreciation</button>
+  <button class="theme-btn">Courage & Resilience</button>
+  <button class="theme-btn">Spiritual Connection & Faith</button>
+  <button class="theme-btn">Purpose & Life Direction</button>
+  <button class="theme-btn">Joy & Positivity</button>
+  <button class="theme-btn">Alignment & Intuition</button>
+  <button class="theme-btn">Presence & Mindfulness</button>
+  <button class="theme-btn">Manifestation & Attraction</button>
+  <button class="theme-btn">Random (All)</button>
+</div>
+  
+  <p> >>> Note: This site is in progress and the buttons don't work yet. Thank you for your patience. <<<
+    
   <div id="outputBox" class="output-box">
     Your affirmation will appear here.
   </div>
@@ -35,8 +61,8 @@
   <br>
   <p><a href="https://github.com/cvcpatton">By Cathy Patton (GitHub link)</a></p>
 
-      <!-- Load Transformers.js library (for in-browser AI) -->
-<script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.3.0/dist/transformers.min.js"></script>
-  <script type="module" src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  
+  <script src="script.js"></script>
 </body>
 </html>
