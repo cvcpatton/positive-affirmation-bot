@@ -24,8 +24,15 @@ A client-side web app that delivers uplifting affirmations based on selected the
 
 This project originally explored AI-generated affirmations using an external inference API. After running into reliability and integration challenges, the approach was simplified to use a structured dataset instead, resulting in faster performance, greater stability, and easier deployment via GitHub Pages.  
 
+Affirmation dataset: 460 themed affirmations generated with ChatGPT and curated/organized by the project author (March 2026).  
+
 ## Possible Improvements  
 
 - Affirmation history tracking  
 - Expanded dataset and theme categories  
 
+## License  
+
+This project is licensed under the MIT License.  
+
+You are free to use, modify, and distribute this software. If you use any part of this project, please include credit to the original author (Cathy Patton).  
