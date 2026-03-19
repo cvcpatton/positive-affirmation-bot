@@ -1,16 +1,71 @@
-// ======================================================
-// Positive Affirmation Bot (Browser-only, ES Module)
-// ======================================================
+// ======== Affirmations array ========
+let affirmations = [];
 
-import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.3.0/dist/transformers.min.js';
+// ======== Load CSV ========
+// Make sure PapaParse is included in your HTML:
+// <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+Papa.parse('affirmations.csv', {
+    download: true,
+    header: true,
+    complete: function(results) {
+        affirmations = results.data.filter(row => row.affirmation && row.theme);
+        console.log('Affirmations loaded:', affirmations.length);
 
-const themeInput = document.getElementById("themeInput");
-const generateBtn = document.getElementById("generateBtn");
-const outputBox = document.getElementById("outputBox");
+        // Once CSV is loaded, set Today's Affirmation
+        loadTodaysAffirmation();
 
-// -----------------------------
-// Slideshow
-// -----------------------------
+        // Enable theme buttons now that data is ready
+        initThemeButtons();
+    }
+});
+
+// ======== Helper: get today's key ========
+function getTodayKey() {
+    const today = new Date();
+    return `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
+}
+
+// ======== Load Today's Affirmation ========
+function loadTodaysAffirmation() {
+    const todayKey = getTodayKey();
+    let todaysAff = localStorage.getItem('todaysAffirmation_' + todayKey);
+
+    if (!todaysAff) {
+        // Pick random from all affirmations
+        const randomIndex = Math.floor(Math.random() * affirmations.length);
+        todaysAff = affirmations[randomIndex].affirmation;
+        localStorage.setItem('todaysAffirmation_' + todayKey, todaysAff);
+    }
+
+    document.getElementById('todaysAffirmation').textContent = todaysAff;
+}
+
+// ======== Theme Buttons Logic ========
+function initThemeButtons() {
+    const outputBox = document.getElementById('outputBox');
+
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const theme = btn.textContent;
+
+            // Filter affirmations by theme
+            let filtered = theme === 'Random (All)'
+                ? affirmations
+                : affirmations.filter(a => a.theme === theme);
+
+            if (filtered.length === 0) {
+                outputBox.textContent = 'No affirmations found for this theme.';
+                return;
+            }
+
+            // Pick a random affirmation from the theme
+            const randomIndex = Math.floor(Math.random() * filtered.length);
+            outputBox.textContent = filtered[randomIndex].affirmation;
+        });
+    });
+}
+
+// ======== Slideshow ========
 const slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
 
@@ -24,50 +79,3 @@ setInterval(() => {
   currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
 }, 6000);
-
-// -----------------------------
-// Load DistilGPT2 model in browser
-// -----------------------------
-let generator;
-
-async function loadModel() {
-  outputBox.innerText = "Loading AI model...";
-  generator = await pipeline("text-generation", "Xenova/distilgpt2");
-  outputBox.innerText = "AI model loaded! Enter a theme and click Generate.";
-}
-
-loadModel();
-
-// -----------------------------
-// Generate affirmation
-// -----------------------------
-async function generateAffirmation() {
-  if (!generator) {
-    outputBox.innerText = "AI model is still loading, please wait...";
-    return;
-  }
-
-  const theme = themeInput.value.trim();
-const prompt = theme
-  ? `Write a positive affirmation about ${theme}. Example: "I am confident and capable." Your sentence:`
-  : `Write a positive affirmation about wellness. Example: "Every day I grow stronger and happier." Your sentence:`;
-
-  outputBox.innerText = "Generating affirmation...";
-
-  try {
-    const result = await generator(prompt, { max_new_tokens: 30, do_sample: true, temperature: 0.9 });
-    let affirmation = result[0].generated_text.split(".")[0] + ".";
-    outputBox.innerText = affirmation;
-  } catch (error) {
-    console.error("AI generation error:", error);
-    outputBox.innerText = "Sorry — the affirmation generator failed. Try again.";
-  }
-}
-
-// -----------------------------
-// Event listeners
-// -----------------------------
-generateBtn.addEventListener("click", generateAffirmation);
-themeInput.addEventListener("keypress", function(event) {
-  if (event.key === "Enter") generateAffirmation();
-});
