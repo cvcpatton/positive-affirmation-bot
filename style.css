@@ -32,10 +32,15 @@ button {
   margin-top: 20px;        
   padding: 10px 14px;      
   border: 1px solid #ddd; 
+  font-size: 18px;
   min-height: 40px;        
   line-height: 1.4;        
   background-color: #d6f9f9; /* very light teal/turquoise */
-  border-radius: 12px;      
+  border-radius: 12px;
+  display: flex;
+  align-items: center;      
+  justify-content: center;  
+  text-align: center; 
 }
 
 .theme-buttons {
