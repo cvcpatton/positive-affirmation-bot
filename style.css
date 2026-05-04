@@ -100,3 +100,11 @@ button {
 .pastel-green { background-color: #d6f5d6; }
 .pastel-blue { background-color: #d6eaff; }
 
+/* Mobile layout: max 3 buttons per row */
+@media (max-width: 600px) {
+  .theme-btn {
+    flex: 1 1 calc(33.333% - 10px); /* 3 per row, accounting for gap */
+    max-width: calc(33.333% - 10px);
+    padding: 8px;
+  }
+}
