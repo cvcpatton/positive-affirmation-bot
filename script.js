@@ -104,6 +104,7 @@ html2canvas(card, {
   scale: 2,
   useCORS: true,
   backgroundColor: "#d6f9f9"  
+  removeContainer: false
 }).then(canvas => {
 
     const link = document.createElement('a');
