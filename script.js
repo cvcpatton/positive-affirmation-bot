@@ -121,4 +121,3 @@ html2canvas(card, {
 
     card.classList.remove('capture-mode');
   });
-});
