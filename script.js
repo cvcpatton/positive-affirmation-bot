@@ -80,6 +80,14 @@ setInterval(() => {
   showSlide(currentSlide);
 }, 6000);
 
+const textEl = document.getElementById('shareText');
+
+if (affirmation.length > 120) {
+  textEl.style.fontSize = "48px";
+} else {
+  textEl.style.fontSize = "64px";
+}
+
 // ===== Download Affirmation as Image =====
 document.getElementById('downloadBtn').addEventListener('click', () => {
   const affirmation = document.getElementById('outputBox').textContent;
@@ -99,8 +107,8 @@ document.getElementById('downloadBtn').addEventListener('click', () => {
     useCORS: true
   }).then(canvas => {
     const link = document.createElement('a');
-    link.download = 'affirmation.png';
-    link.href = canvas.toDataURL('image/png');
+    link.download = 'affirmation.jpg';
+    link.href = canvas.toDataURL('image/jpeg', 0.9);
     link.click();
   });
 });
