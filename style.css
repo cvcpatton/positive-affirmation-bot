@@ -115,10 +115,8 @@ button {
   width: 1080px;
   height: 1080px;
 
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;   
+  margin-top: 60px;
 
   background: linear-gradient(135deg, #d6f9f9, #bff3f3, #a8eaea);
 
@@ -126,7 +124,7 @@ button {
   justify-content: center;
   align-items: center;
 
-  visibility: hidden;   /* 👈 key fix */
+  pointer-events: none;
 }
 
 .share-card.capture-mode {
