@@ -81,24 +81,28 @@ setInterval(() => {
 }, 6000);
 
 // ========= Save as JPG ===========
-document.getElementById('downloadBtn').addEventListener('click', async () => {
-  const affirmation = document.getElementById('outputBox').textContent;
+document.querySelectorAll('.theme-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
 
-  if (!affirmation || affirmation.includes("appear here")) {
-    alert("Please generate an affirmation first!");
-    return;
-  }
+    const theme = btn.textContent.trim(); // 👈 IMPORTANT FIX
 
-  const card = document.getElementById('shareCard');
-  const textEl = document.getElementById('shareText');
+    let filtered = theme === 'Random (All)'
+      ? affirmations
+      : affirmations.filter(a =>
+          a.theme.trim().toLowerCase() === theme.toLowerCase()
+        );
 
-  textEl.textContent = affirmation;
-  textEl.style.fontSize = affirmation.length > 120 ? "48px" : "64px";
+    const outputBox = document.getElementById('outputBox');
 
-  await document.fonts.ready;
-  await new Promise(r => setTimeout(r, 200));
+    if (filtered.length === 0) {
+      outputBox.textContent = 'No affirmations found for this theme.';
+      return;
+    }
 
-  card.classList.add('capture-mode');
+    const randomIndex = Math.floor(Math.random() * filtered.length);
+    outputBox.textContent = filtered[randomIndex].affirmation;
+  });
+});
 
 html2canvas(card, {
   scale: 2,
