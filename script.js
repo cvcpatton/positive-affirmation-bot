@@ -80,15 +80,6 @@ setInterval(() => {
   showSlide(currentSlide);
 }, 6000);
 
-const textEl = document.getElementById('shareText');
-
-if (affirmation.length > 120) {
-  textEl.style.fontSize = "48px";
-} else {
-  textEl.style.fontSize = "64px";
-}
-
-// ===== Download Affirmation as Image =====
 document.getElementById('downloadBtn').addEventListener('click', () => {
   const affirmation = document.getElementById('outputBox').textContent;
 
@@ -97,8 +88,16 @@ document.getElementById('downloadBtn').addEventListener('click', () => {
     return;
   }
 
-  // Insert text into share card
-  document.getElementById('shareText').textContent = affirmation;
+  const textEl = document.getElementById('shareText');
+
+  // Adjust font size safely
+  if (affirmation.length > 120) {
+    textEl.style.fontSize = "48px";
+  } else {
+    textEl.style.fontSize = "64px";
+  }
+
+  textEl.textContent = affirmation;
 
   const card = document.getElementById('shareCard');
 
