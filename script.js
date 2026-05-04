@@ -88,19 +88,17 @@ document.getElementById('downloadBtn').addEventListener('click', async () => {
     return;
   }
 
-  const textEl = document.getElementById('shareText');
   const card = document.getElementById('shareCard');
+  const textEl = document.getElementById('shareText');
 
   textEl.textContent = affirmation;
   textEl.style.fontSize = affirmation.length > 120 ? "48px" : "64px";
 
-  // FORCE layout to update BEFORE capture
-  card.style.opacity = "1";
-  card.style.zIndex = "9999";
-
-  // wait for fonts to load
+  // ensure fonts are loaded
   await document.fonts.ready;
-  await new Promise(resolve => setTimeout(resolve, 300));
+
+  // small delay for iOS paint cycle
+  await new Promise(r => setTimeout(r, 300));
 
   html2canvas(card, {
     scale: 2,
