@@ -89,25 +89,37 @@ document.getElementById('downloadBtn').addEventListener('click', () => {
   }
 
   const textEl = document.getElementById('shareText');
-
-  // Adjust font size safely
-  if (affirmation.length > 120) {
-    textEl.style.fontSize = "48px";
-  } else {
-    textEl.style.fontSize = "64px";
-  }
-
-  textEl.textContent = affirmation;
-
   const card = document.getElementById('shareCard');
 
-  html2canvas(card, {
-    scale: 3,
-    useCORS: true
-  }).then(canvas => {
-    const link = document.createElement('a');
-    link.download = 'affirmation.jpg';
-    link.href = canvas.toDataURL('image/jpeg', 0.9);
-    link.click();
-  });
+  textEl.textContent = affirmation;
+  textEl.style.fontSize = affirmation.length > 120 ? "48px" : "64px";
+
+  // force render for iOS stability
+  card.style.opacity = "1";
+  card.style.zIndex = "9999";
+
+  setTimeout(() => {
+    html2canvas(card, {
+      scale: 2,
+      useCORS: true
+    }).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'affirmation.jpg';
+      link.href = canvas.toDataURL('image/jpeg', 0.92);
+      link.click();
+    });
+  }, 100);
 });
+
+html2canvas(card, {
+  scale: 2,
+  backgroundColor: null,
+  useCORS: true,
+  logging: true
+}).then(canvas => {
+  const link = document.createElement('a');
+  link.download = 'affirmation.jpg';
+  link.href = canvas.toDataURL('image/jpeg', 0.92);
+  link.click();
+});
+
