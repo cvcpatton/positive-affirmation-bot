@@ -116,20 +116,21 @@ button {
   height: 1080px;
 
   position: fixed;
-  top: -2000px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 
-  background: linear-gradient(
-    135deg,
-    #d6f9f9,
-    #bff3f3,
-    #a8eaea
-  );
+  background: linear-gradient(135deg, #d6f9f9, #bff3f3, #a8eaea);
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  visibility: hidden;   /* 👈 key fix */
+}
+
+.share-card.capture-mode {
+  visibility: visible;
 }
 
 .card-inner {
