@@ -101,7 +101,7 @@ function initDownload() {
     textEl.textContent = affirmation;
     textEl.style.fontSize = affirmation.length > 120 ? "48px" : "64px";
 
-    await new Promise(r => setTimeout(r, 200));
+    await document.fonts?.ready;
 
     html2canvas(card, {
       scale: 2,
