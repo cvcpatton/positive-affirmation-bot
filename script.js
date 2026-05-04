@@ -80,7 +80,7 @@ setInterval(() => {
   showSlide(currentSlide);
 }, 6000);
 
-document.getElementById('downloadBtn').addEventListener('click', () => {
+document.getElementById('downloadBtn').addEventListener('click', async () => {
   const affirmation = document.getElementById('outputBox').textContent;
 
   if (!affirmation || affirmation.includes("appear here")) {
@@ -94,32 +94,22 @@ document.getElementById('downloadBtn').addEventListener('click', () => {
   textEl.textContent = affirmation;
   textEl.style.fontSize = affirmation.length > 120 ? "48px" : "64px";
 
-  // force render for iOS stability
+  // FORCE layout to update BEFORE capture
   card.style.opacity = "1";
   card.style.zIndex = "9999";
 
-  setTimeout(() => {
-    html2canvas(card, {
-      scale: 2,
-      useCORS: true
-    }).then(canvas => {
-      const link = document.createElement('a');
-      link.download = 'affirmation.jpg';
-      link.href = canvas.toDataURL('image/jpeg', 0.92);
-      link.click();
-    });
-  }, 100);
-});
+  // wait for fonts to load
+  await document.fonts.ready;
+  await new Promise(resolve => setTimeout(resolve, 300));
 
-html2canvas(card, {
-  scale: 2,
-  backgroundColor: null,
-  useCORS: true,
-  logging: true
-}).then(canvas => {
-  const link = document.createElement('a');
-  link.download = 'affirmation.jpg';
-  link.href = canvas.toDataURL('image/jpeg', 0.92);
-  link.click();
+  html2canvas(card, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: null
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'affirmation.jpg';
+    link.href = canvas.toDataURL('image/jpeg', 0.92);
+    link.click();
+  });
 });
-
