@@ -98,13 +98,13 @@ document.getElementById('downloadBtn').addEventListener('click', async () => {
   await document.fonts.ready;
   await new Promise(r => setTimeout(r, 200));
 
-  // 👉 SHOW ONLY FOR CAPTURE
   card.classList.add('capture-mode');
 
-  html2canvas(card, {
-    scale: 2,
-    useCORS: true
-  }).then(canvas => {
+html2canvas(card, {
+  scale: 2,
+  useCORS: true,
+  backgroundColor: "#d6f9f9"  
+}).then(canvas => {
 
     const link = document.createElement('a');
     link.download = 'affirmation.jpg';
