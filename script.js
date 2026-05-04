@@ -80,6 +80,7 @@ setInterval(() => {
   showSlide(currentSlide);
 }, 6000);
 
+// ========= Save as JPG ===========
 document.getElementById('downloadBtn').addEventListener('click', async () => {
   const affirmation = document.getElementById('outputBox').textContent;
 
@@ -94,20 +95,22 @@ document.getElementById('downloadBtn').addEventListener('click', async () => {
   textEl.textContent = affirmation;
   textEl.style.fontSize = affirmation.length > 120 ? "48px" : "64px";
 
-  // ensure fonts are loaded
   await document.fonts.ready;
+  await new Promise(r => setTimeout(r, 200));
 
-  // small delay for iOS paint cycle
-  await new Promise(r => setTimeout(r, 300));
+  // 👉 SHOW ONLY FOR CAPTURE
+  card.classList.add('capture-mode');
 
   html2canvas(card, {
     scale: 2,
-    useCORS: true,
-    backgroundColor: null
+    useCORS: true
   }).then(canvas => {
+
     const link = document.createElement('a');
     link.download = 'affirmation.jpg';
     link.href = canvas.toDataURL('image/jpeg', 0.92);
     link.click();
+
+    card.classList.remove('capture-mode');
   });
 });
