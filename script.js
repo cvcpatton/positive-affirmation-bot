@@ -5,18 +5,21 @@ let affirmations = [];
 // Make sure PapaParse is included in your HTML:
 // <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 Papa.parse('affirmations.csv', {
-    download: true,
-    header: true,
-    complete: function(results) {
-        affirmations = results.data.filter(row => row.affirmation && row.theme);
-        console.log('Affirmations loaded:', affirmations.length);
+  download: true,
+  header: true,
+  skipEmptyLines: true,
+  complete: function(results) {
 
-        // Once CSV is loaded, set Today's Affirmation
-        loadTodaysAffirmation();
+    console.log("CSV loaded:", results.data.length);
 
-        // Enable theme buttons now that data is ready
-        initThemeButtons();
-    }
+    affirmations = results.data.filter(row => row.affirmation && row.theme);
+
+    loadTodaysAffirmation();
+    initThemeButtons();
+  },
+  error: function(err) {
+    console.error("CSV failed to load", err);
+  }
 });
 
 // ======== Helper: get today's key ========
