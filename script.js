@@ -79,3 +79,28 @@ setInterval(() => {
   currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
 }, 6000);
+
+// ===== Download Affirmation as Image =====
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  const affirmation = document.getElementById('outputBox').textContent;
+
+  if (!affirmation || affirmation.includes("appear here")) {
+    alert("Please generate an affirmation first!");
+    return;
+  }
+
+  // Insert text into share card
+  document.getElementById('shareText').textContent = affirmation;
+
+  const card = document.getElementById('shareCard');
+
+  html2canvas(card, {
+    scale: 3,
+    useCORS: true
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'affirmation.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+});
