@@ -1,4 +1,4 @@
-# Graceful Nudge Affirmations 🌺 (In progress, March 2026)  
+# Graceful Nudge Affirmations 🌺 (May 2026)  
 A client-side web app that delivers uplifting affirmations based on selected themes. Users can choose from 24 themes or a "Random (All)" option to receive a short, encouraging message. The app uses a curated dataset of hundreds of affirmations, making it fast, reliable, and easy to use without any external dependencies.  
 
 🚀 Live Demo (In progress) - [Graceful Nudge Affirmations Live Demo](https://cvcpatton.github.io/positive-affirmation-bot/index.html)  
