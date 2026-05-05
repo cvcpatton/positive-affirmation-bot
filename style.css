@@ -179,11 +179,19 @@ button {
   color: rgba(90, 45, 130, 0.12);
   line-height: 0;
   transform: translateZ(0);
-  align-self: flex-start; 
 }
 
-.quote-mark.closing {
-  align-self: flex-end;
+.quote-row {
+  width: 100%;
+  display: flex;
+}
+
+.quote-row.left {
+  justify-content: flex-start;
+}
+
+.quote-row.right {
+  justify-content: flex-end;
 }
 
 .footer {
