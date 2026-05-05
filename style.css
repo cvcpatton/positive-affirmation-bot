@@ -179,6 +179,7 @@ button {
   color: rgba(90, 45, 130, 0.12);
   line-height: 0;
   transform: translateZ(0);
+  align-self: flex-start; 
 }
 
 .quote-mark.closing {
