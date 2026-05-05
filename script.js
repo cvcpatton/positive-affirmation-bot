@@ -102,7 +102,10 @@ function initDownload() {
     textEl.style.fontSize = affirmation.length > 120 ? "48px" : "64px";
 
     await document.fonts?.ready;
-    await new Promise(resolve => setTimeout(resolve, 100));
+
+    textEl.offsetHeight; // triggers reflow
+    await new Promise(requestAnimationFrame);
+    await new Promise(resolve => setTimeout(resolve, 50));
 
     html2canvas(card, {
       scale: 2,
