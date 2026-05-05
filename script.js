@@ -107,19 +107,17 @@ function initDownload() {
     await new Promise(requestAnimationFrame);
     await new Promise(resolve => setTimeout(resolve, 50));
 
-    html2canvas(card, {
+    const canvas = await html2canvas(card, {
       scale: 2,
       useCORS: true,
       backgroundColor: "#d6f9f9"
-    }).then(canvas => {
-
-      const link = document.createElement('a');
-      link.download = 'affirmation.jpg';
-      link.href = canvas.toDataURL('image/jpeg', 0.92);
-      link.click();
-
     });
-  });
+
+    const link = document.createElement('a');
+    link.download = 'affirmation.jpg';
+    link.href = canvas.toDataURL('image/jpeg', 0.92);
+    link.click();
+    });
 }
 
 // =====================
