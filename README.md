@@ -2,6 +2,7 @@
 A client-side web app that delivers uplifting affirmations based on selected themes. Users can choose from 24 themes or a "Random (All)" option to receive a short, encouraging message. The app uses a curated dataset of hundreds of affirmations, making it fast, reliable, and easy to use without any external dependencies.  
 
 🚀 Live Demo - [Graceful Nudge Affirmations Live Demo](https://cvcpatton.github.io/positive-affirmation-bot/index.html)  
+Instagram - [Graceful Nudge Affirmations on IG](https://www.instagram.com/gracefulnudgeaffirmations)
 
 ## Features  
 
